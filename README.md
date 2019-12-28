@@ -1,5 +1,13 @@
 # spark-tut-parent
 
+## environment setting 
+```$xslt
+1.maven
+2.java 8
+
+```
+
+
 ## repos notes
 
 - 初始化仓库.
