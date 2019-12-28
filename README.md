@@ -8,6 +8,9 @@
 ## spark on yarn 
 
 ```$xslt
-spark on yarn 
-环境配置
+1.spark on yarn环境配置
+    1.配置hadoop
+    2.配置spark env
+2.yarn-client和yarn-cluster两种模式
 ```
+
