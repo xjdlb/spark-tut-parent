@@ -4,14 +4,18 @@
 ```$xslt
 1.maven
 2.java 8
-
 ```
-
 
 ## repos notes
 
-- 初始化仓库.
-- 增加了maven pom files. 
+```
+初始化仓库
+增加了maven pom files
+增加了core核心例子
+增加了spark ml分类和回归例子
+增加了scala例子
+增加了spark sql例子
+```
 
 ## spark on yarn 
 
