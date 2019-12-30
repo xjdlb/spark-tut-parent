@@ -70,7 +70,7 @@
 
 ```text
 1.SparkContext和Rdd
-2.java中的IO
+2.Java中的IO
     理解1和2之前需要了解JAVA的IO.
     输入和输出，字节和字符流
     new BufferedInputStream(new FileInputStream("")) 体现了装饰器模式
@@ -78,8 +78,15 @@
 ![java-io-decorate](img/java-io-decorate.png)
 
 ```text
-3.rdd的函数都是将创建RDD作为参数传入，类似于java io
+3.RDD的函数都是将创建RDD作为参数传入，类似于Java IO
 ```
 ![java-io-decorate](img/RDD-decorate.png)
 
+## RDD
+
+```text
+RDD是弹性分布式数据集，数据抽象和逻辑抽象，是抽象类
+RDD的特点是不可变，可分区，并行计算，集合
+
+```
 
