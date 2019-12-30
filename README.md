@@ -29,8 +29,8 @@
 2.yarn-client和yarn-cluster两种模式
 3.spark on yarn的启动命令
     模式
-        ./bin/spark-submit --class path.to.your.Class --master yarn 
-        --deploy-mode cluster [options] <app jar> [app options]
+        ./bin/spark-submit --class path.to.your.Class --master yarn \
+            --deploy-mode cluster [options] <app jar> [app options]
     命令
         ./bin/spark-submit --class org.apache.spark.examples.SparkPi \
             --master yarn \
@@ -64,7 +64,22 @@
 ```text
 1.没有yarn的资源管理，则使用spark的资源管理
 2.master与worker，环境相关的配置(省略）
-3.
 ```
+
+## JAVA IO tips
+
+```text
+1.SparkContext和Rdd
+2.java中的IO
+    理解1和2之前需要了解JAVA的IO.
+    输入和输出，字节和字符流
+    new BufferedInputStream(new FileInputStream("")) 体现了装饰器模式
+```
+![java-io-decorate](img/java-io-decorate.png)
+
+```text
+3.rdd的函数都是将创建RDD作为参数传入，类似于java io
+```
+![java-io-decorate](img/RDD-decorate.png)
 
 
