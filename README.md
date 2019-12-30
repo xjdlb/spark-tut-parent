@@ -47,5 +47,5 @@ cd $SPARK_HOME/bin
 --num-executors 10
 ```
 
-spark on yarn
+spark on yarn  
 ![Spark On Yarn](img/spark-on-yarn.jpg)
