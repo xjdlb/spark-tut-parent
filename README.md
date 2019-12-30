@@ -39,4 +39,13 @@
     --queue thequeue \
     lib/spark-examples*.jar \
     10
+spark-shell也可以直接运行yarn模式
+cd $SPARK_HOME/bin
+./spark-shell \
+--master yarn-client \
+--executor-memory 1G \
+--num-executors 10
 ```
+
+spark on yarn
+![Spark On Yarn](img/spark-on-yarn.jpg)
