@@ -47,13 +47,16 @@ spark-shell也可以直接运行yarn模式
     --master yarn-client \
     --executor-memory 1G \
     --num-executors 10
-```
-
-```text
 4.spark on yarn的执行流程图
 ```
 ![Spark On Yarn](img/spark-on-yarn.png)
 
+```text
 5.打包相关的插件(直接见maven pom.xml)
+6.文件的查找方式，一句运行环境
+    本地文件：file:///opt/in
+    yarn可以直接把数据放在input
+    查看yarn数据源
+```
 
 
