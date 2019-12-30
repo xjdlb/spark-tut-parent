@@ -28,7 +28,8 @@
 2.yarn-client和yarn-cluster两种模式
 3.spark on yarn的启动命令
 模式
-./bin/spark-submit --class path.to.your.Class --master yarn --deploy-mode cluster [options] <app jar> [app options]
+./bin/spark-submit --class path.to.your.Class --master yarn 
+    --deploy-mode cluster [options] <app jar> [app options]
 命令
 ./bin/spark-submit --class org.apache.spark.examples.SparkPi \
     --master yarn \
@@ -47,5 +48,5 @@ cd $SPARK_HOME/bin
 --num-executors 10
 ```
 
-spark on yarn  
+**spark on yarn**  
 ![Spark On Yarn](img/spark-on-yarn.png)
