@@ -48,4 +48,4 @@ cd $SPARK_HOME/bin
 ```
 
 spark on yarn  
-![Spark On Yarn](img/spark-on-yarn.jpg)
+![Spark On Yarn](img/spark-on-yarn.png)
