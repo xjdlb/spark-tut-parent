@@ -59,4 +59,12 @@ spark-shell也可以直接运行yarn模式
     查看yarn数据源
 ```
 
+## spark standalone
+
+```text
+1.没有yarn的资源管理，则使用spark的资源管理
+2.master与worker，环境相关的配置(省略）
+3.
+```
+
 
