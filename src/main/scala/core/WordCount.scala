@@ -18,18 +18,17 @@ object WordCount {
     val word2sum: RDD[(String, Int)] = word2one.reduceByKey(_ + _)
     val result: Array[(String, Int)] = word2sum.collect()
 
-    //RDD的创建
+    //RDD的创建 defaultParallelism
     val rdd1: RDD[Int] = sc.makeRDD(List(1, 2, 3))
-    val rdd2: RDD[Int] = sc.makeRDD(Array(1, 2, 3, 4))
+    //自定义分区
+    val rdd2: RDD[Int] = sc.makeRDD(Array(1, 2, 3, 4), 2)
     //底层实现一样
     val rdd3: RDD[Int] = sc.parallelize(List(1, 2, 3))
 
-    //从当前项目文件中创建
+    //从当前项目文件中创建 defaultMinPartitions
     val rdd4: RDD[String] = sc.textFile("input")
     //删除到文件，可以看到默认分区为8个
     rdd1.saveAsTextFile("output")
-
-
 
 
     println(result)

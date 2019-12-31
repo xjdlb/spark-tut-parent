@@ -98,4 +98,7 @@ RDD的特点是不可变，可分区，并行计算，集合
 返回前面：opt+alt+LR
 到抽象类：**ctrl+H查看实现面板**，复制当前函数
 到实现面板：搜索实现的函数
+比如分析本地运行的输出文件为什么是8个分区？
+makeRDD函数->defaultParallelism->defaultParallelism->接口defaultParallelism()
+->ctrl+H->查看到实现...
 ```
