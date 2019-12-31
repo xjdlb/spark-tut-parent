@@ -87,8 +87,13 @@
 ```text
 RDD是弹性分布式数据集，数据抽象和逻辑抽象，是抽象类
 RDD的特点是不可变，可分区，并行计算，集合
-移动数据不如移动计算(Driver驱动器分配，Executor执行器上执行，最优位置）
+移动数据不如移动计算(Driver驱动器分配，Executor执行器上执行，最优位置解决了计算发给哪executor）
+本地化：数据和计算在同一个进程中。正在计算中，另外一个分配了计算，结果就启动executor但是也在这个节点上。
+节点本地化提升效率，机架本地化。
+
 算子：转换算子 & 执行算子
+RDD可以自己保持依赖，在RDD内部@transient private var deps: Seq[Dependency[_]]
+首选位置概念，节点本地化protected def getPreferredLocations(split: Partition): Seq[String] = Nil
 ```
 
 ## Source Code Reading Skills
