@@ -1,13 +1,13 @@
 # spark-tut-parent
 
-## environment settings
+## Environment Settings
 ```text
 1.maven
 2.java 8
 3.spark core/ml/sql
 ```
 
-## repository notes
+## Repository Notes
 
 ```text
 初始化仓库
@@ -18,7 +18,7 @@
 增加了spark sql例子
 ```
 
-## spark on yarn tips
+## Spark on Yarn Tips
 
 ```text
 1.spark on yarn环境配置
@@ -59,14 +59,14 @@
     查看yarn数据源
 ```
 
-## spark standalone tips
+## Spark Standalone Tips
 
 ```text
 1.没有yarn的资源管理，则使用spark的资源管理
 2.master与worker，环境相关的配置(省略）
 ```
 
-## JAVA IO tips
+## Java IO Tips
 
 ```text
 1.SparkContext和Rdd
@@ -82,11 +82,10 @@
 ```
 ![java-io-decorate](img/RDD-decorate.png)
 
-## RDD
+## Rdd
 
 ```text
 RDD是弹性分布式数据集，数据抽象和逻辑抽象，是抽象类
 RDD的特点是不可变，可分区，并行计算，集合
-
 ```
 
