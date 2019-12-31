@@ -30,6 +30,7 @@ object WordCount {
     //删除到文件，可以看到默认分区为8个
     rdd1.saveAsTextFile("output")
 
+    //fixme: 读数据时需要考虑分区的大小...
 
     println(result)
   }
