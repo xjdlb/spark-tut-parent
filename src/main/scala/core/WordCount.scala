@@ -3,8 +3,6 @@ package core
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
-import scala.reflect.ClassTag
-
 /**
  * @Author: leebin
  * @Date: 2019/12/27 11:55 下午
