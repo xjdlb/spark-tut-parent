@@ -3,6 +3,8 @@ package core
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
+import scala.reflect.ClassTag
+
 /**
  * @Author: leebin
  * @Date: 2019/12/27 11:55 下午
@@ -14,9 +16,8 @@ object WordCount {
     fixme: SparkConf源码解析
     SparkConf类很简单
     private val settings = new ConcurrentHashMap[String, String]()
-
     fixme: SparkContext源码解析
-
+    sc是整个spark的入口程序，里面包含了众多方法。网上有很多对SparkContext的解析：https://www.cnblogs.com/xia520pi/p/8609602.html
      */
     val conf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount")
     val sc: SparkContext = new SparkContext(conf)
@@ -31,14 +32,19 @@ object WordCount {
     val word2sum: RDD[(String, Int)] = word2one.reduceByKey(_ + _)
     val result: Array[(String, Int)] = word2sum.collect()
 
-    //RDD的创建 defaultParallelism
+    /*
+    fixme: RDD生成源码解析
+    RDD的创建都是走parallelism
+    def makeRDD[T: ClassTag](seq: Seq[T], numSlices: Int = defaultParallelism): RDD[T]
+    defaultParallelism隐藏的很深，需要如下技巧才能找到最开始的代码：
+    1.光标的控制，进入(alt+B)和后退(opt+cmd+LR)
+    2.代码行数,ctrl+G
+    3.查看当前Structure(ctrl+f12)或者打开Structure面板
+    4.查看接口的继承实现关系ctrl+H
+     */
     val rdd1: RDD[Int] = sc.makeRDD(List(1, 2, 3))
-    //自定义分区
     val rdd2: RDD[Int] = sc.makeRDD(Array(1, 2, 3, 4), 2)
-    //底层实现一样
     val rdd3: RDD[Int] = sc.parallelize(List(1, 2, 3))
-
-    //从当前项目文件中创建 defaultMinPartitions
     val rdd4: RDD[String] = sc.textFile("input")
     //删除到文件，可以看到默认分区为8个
     rdd1.saveAsTextFile("output")
