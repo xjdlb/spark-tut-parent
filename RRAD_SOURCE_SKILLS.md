@@ -11,7 +11,7 @@
 ## 源码解析
 
 | 功能  | 源码解析 |
-|---| ----- |
-| SparkConf/SparkContext/makeRDD/map  | src/main/scala/core/WordCount.scala |
+|---   | --- |
+| SparkConf/SparkContext/makeRDD/map | src/main/scala/core/WordCount.scala |
 
 
