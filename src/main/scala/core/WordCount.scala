@@ -3,6 +3,8 @@ package core
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
+import scala.reflect.ClassTag
+
 /**
  * @Author: leebin
  * @Date: 2019/12/27 11:55 下午
@@ -56,13 +58,25 @@ object WordCount {
     val rdd6: RDD[Int] = sc.makeRDD(1 to 10).map(_ * 2)
 
     /*
-    fixme: mapPartitions与map的区别
+    fixme: mapPartitions与map与mapPartitionsWithIndex的区别
     遍历分区 vs 遍历元素
-    业务角度：map好用(发数据消耗资源) vs 性能角度：mapPartitions好用(发送计算,减少发送到执行器的交互时间)
+    业务角度：map好用(发数据消耗资源) vs
+    性能角度：mapPartitions好用(发送计算,减少发送到执行器的交互时间，但是消耗资源严重占用整个分区，可能OOM)
+    //def mapPartitionsWithIndex[U: ClassTag](f: (Int, Iterator[T]) => Iterator[U], preservesPartitioning: Boolean = false): RDD[U]
+    mapPartitionsWithIndex:遍历分区,显示分区号(重点)
      */
     val mapPartitionsRdd1: RDD[Int] = rdd1.map(data => data * 2)
     val mapPartitionsRdd2: RDD[Int] = rdd1.mapPartitions(data => data)
     val mapPartitionsRdd3: RDD[Int] = rdd1.mapPartitions(data => data.map(d => d * 2))
+    //分区号
+    val tupleRdd: RDD[(Int, String)] = rdd1.mapPartitionsWithIndex {
+      case (num, data) => {
+        println(num)
+        //data
+        data.map((_, ":分区号:" + num))
+      }
+    }
+
 
     println(result)
   }
