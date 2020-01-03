@@ -54,6 +54,16 @@ object WordCount {
     */
     val rdd5: RDD[Int] = sc.makeRDD(1 to 10).map(x => x * 2)
     val rdd6: RDD[Int] = sc.makeRDD(1 to 10).map(_ * 2)
+
+    /*
+    fixme: mapPartitions与map的区别
+    遍历分区 vs 遍历元素
+    业务角度：map好用(发数据消耗资源) vs 性能角度：mapPartitions好用(发送计算,减少发送到执行器的交互时间)
+     */
+    val mapPartitionsRdd1: RDD[Int] = rdd1.map(data => data * 2)
+    val mapPartitionsRdd2: RDD[Int] = rdd1.mapPartitions(data => data)
+    val mapPartitionsRdd3: RDD[Int] = rdd1.mapPartitions(data => data.map(d => d * 2))
+
     println(result)
   }
 }

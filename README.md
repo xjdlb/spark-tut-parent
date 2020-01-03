@@ -94,6 +94,7 @@ RDD的特点是不可变，可分区，并行计算，集合
 RDD可以自己保持依赖，在RDD内部 @transient private var deps: Seq[Dependency[_]]
 首选位置概念，节点本地化 protected def getPreferredLocations(split: Partition): Seq[String] = Nil
 如何计算分区 和 那个文件放在哪个分区是两个问题。
+分区map和map的区别。
 ```
 
 ## Source Code Reading Skills
@@ -107,3 +108,5 @@ RDD可以自己保持依赖，在RDD内部 @transient private var deps: Seq[Depe
 makeRDD函数->defaultParallelism->defaultParallelism->接口defaultParallelism()
 ->ctrl+H->查看到实现...
 ```
+
+

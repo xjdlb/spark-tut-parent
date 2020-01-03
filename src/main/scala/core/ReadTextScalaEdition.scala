@@ -67,7 +67,6 @@ object ReadTextScalaEdition {
 
     //
 
-
     //close session
     sparkSession.stop()
   }
