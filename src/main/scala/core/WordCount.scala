@@ -64,11 +64,13 @@ object WordCount {
     性能角度：mapPartitions好用(发送计算,减少发送到执行器的交互时间，但是消耗资源严重占用整个分区，可能OOM)
     //def mapPartitionsWithIndex[U: ClassTag](f: (Int, Iterator[T]) => Iterator[U], preservesPartitioning: Boolean = false): RDD[U]
     mapPartitionsWithIndex:遍历分区,显示分区号(重点)
+    flatMap的用法: 遍历展开
      */
     val mapPartitionsRdd1: RDD[Int] = rdd1.map(data => data * 2)
     val mapPartitionsRdd2: RDD[Int] = rdd1.mapPartitions(data => data)
     val mapPartitionsRdd3: RDD[Int] = rdd1.mapPartitions(data => data.map(d => d * 2))
     //分区号
+    val indexRdd: RDD[Int] = rdd1.mapPartitionsWithIndex((num, data) => data.map(d => d * num))
     val tupleRdd: RDD[(Int, String)] = rdd1.mapPartitionsWithIndex {
       case (num, data) => {
         println(num)
@@ -76,7 +78,8 @@ object WordCount {
         data.map((_, ":分区号:" + num))
       }
     }
-
+    val flatMapRdd1: RDD[List[Int]] = sc.makeRDD(Array(List(1, 2), List(3, 4)))
+    val flatMapRdd2: RDD[Int] = flatMapRdd1.flatMap(data => data)
 
     println(result)
   }

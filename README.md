@@ -109,4 +109,13 @@ makeRDD函数->defaultParallelism->defaultParallelism->接口defaultParallelism(
 ->ctrl+H->查看到实现...
 ```
 
+## Driver and Executor
+
+```textmate
+什么是Driver？创建Spark上下文的App就是Driver，比如WordCount(发送任务).
+什么是Executor？接受任务，执行任务的就是Executor(返回执行状态).
+代码中的那些程序是Driver中执行的？哪些是Executor中执行的？
+算子的计算功能在Executor中执行；声明sc的地方是Executor，在sc声明的地方不需要写Executor引用的变量，会增加网络的IO。
+```
+
 
