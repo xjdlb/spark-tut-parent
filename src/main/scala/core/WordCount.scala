@@ -81,6 +81,15 @@ object WordCount {
     val flatMapRdd1: RDD[List[Int]] = sc.makeRDD(Array(List(1, 2), List(3, 4)))
     val flatMapRdd2: RDD[Int] = flatMapRdd1.flatMap(data => data)
 
+    //fixme: glom算子(一撇，偷)将每个分区想成一个数组形成新的RDD defaultParallelism和glom
+    val glomRdd: RDD[Array[Int]] = sc.makeRDD(List(1, 2, 3, 4, 5), 3).glom()
+    glomRdd.foreach(arr => {
+      for (elem <- arr) {
+        println(elem)
+      }
+    })
     println(result)
+
+    //fixme:
   }
 }
